@@ -1,0 +1,24 @@
+%my custom style for lab reports
+\documentclass[a4paper]{report}
+% use subfiles 
+\usepackage{subfiles}
+% allow src code implementation
+\usepackage{listings}
+% needed for images
+\usepackage{graphicx}
+% all images should be placed in figures/
+\graphicspath{{./figures/}}
+% enable more control of floats
+\usepackage{float}
+% use good tables
+\usepackage{tabularx}
+\usepackage{booktabs}
+% use math symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+% custom reference styles
+\usepackage{refstyle}
+\newref{fig}{refcmd={Figure~\ref{#1}}}
+\newref{tab}{refcmd={Table~\ref{#1}}}
+\newref{gph}{refcmd={Graph~\ref{#1}}}
+\newref{eq}{refcmd={Equation~\ref{#1}}}
