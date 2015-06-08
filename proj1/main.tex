@@ -1,25 +1,36 @@
-%        File: main.tex
-%     Created: Thu Nov 06 11:00 AM 2014 E
-% Last Change: Thu Nov 06 11:00 AM 2014 E
-%
-\usepackage{labreport}
+\documentclass[a4paper,titlepage]{article}
+
+%include the packages and styles to use
+%\usepackage{package_name}
 
 \begin{document}
-	\title{<+Report Title+>}
-	\author{<+Authors/Other Lab Info+>}
+
+	\title{<+Title+>}
+	\author{<+Author+>}
 	% Date is automagically included (see Latex documentation)
 	\maketitle
+
 	\begin{abstract}
+
 	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
 	tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
 	vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
 	no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
 	\end{abstract}
 
+	\tableofcontents
+	\listoftables
+	\listoffigures
+
+	\pagebreak
+
 	% other sections of the labreport go here
-	\subfile{intro}
-	\subfile{methods}
-	\subfile{results}
-	\subfile{conclusion}
-	\subfile{graphs}
+	%\subfile{file_basename}
+
+	%\pagebreak
+	%appendix of the document go here
+	%\subfile{file_basename}
+	%\pagebreak
+
 \end{document}
