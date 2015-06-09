@@ -6,25 +6,18 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(LaTeXBuild)
 include(FindLATEX)
 
-project("TexProject")
+project("<+project+>")
 
 set(PDF_COMPILER_OPTS "")
 
 # list of projects to build
-set(projects "proj1")
+set(projects 
+	"proj1"
+	)
+
+set(OLDTEXINPUTS $ENV{TEXINPUTS})
 
 #build the project infos
-foreach(proj "${projects}")
+foreach(proj ${projects})
 	add_subdirectory(${proj})
 endforeach(proj)
-
-# finish building the TEXINPUTS for projects with dependencies
-foreach(proj "${projects}")
-	set("${proj}_TEXINPUTS" "${${proj}_texInputs}")
-	foreach(dep ${${proj}_dependProjects})
-		set("${proj}_TEXINPUTS" "${${proj}_TEXINPUTS}:${${dep}_texInputs}")
-	endforeach(dep)
-endforeach(proj)
-
-foreach(projectName "${projects}")
-endforeach(projectName)

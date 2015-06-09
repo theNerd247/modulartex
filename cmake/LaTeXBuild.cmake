@@ -48,9 +48,11 @@ function(BuildLaTeX
 
 	add_custom_command(
 		OUTPUT "${CMAKE_BINARY_DIR}/${projectName}.pdf"
-		COMMAND ${PDFLATEX_COMPILER}
-			${PDF_COMPILER_OPTS}
-			"${${projectName}_mainTexFilePath}"
+		COMMAND
+			"TEXINPUTS=${OLDTEXINPUTS}:${${projectName}_texInputs}" # set the TEXINPUTS
+			${PDFLATEX_COMPILER} # run pdflatex
+				${PDF_COMPILER_OPTS}
+				"${${projectName}_mainTexFilePath}"
 		DEPENDS "${${projectName}_mainTexFilePath}"
 		COMMENT "pdflates"
 		)

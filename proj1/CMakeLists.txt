@@ -3,7 +3,7 @@ cmake_policy(SET CMP0011 NEW) #acknowledge policy push/pop
 
 include(LaTeXBuild)
 
-set(projectName "proj1")
+set(projectName "<+proj1+>")
 
 set(mainTexFile "main.tex")
 
