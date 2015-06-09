@@ -1,27 +1,27 @@
-ctrlsys
+project
 -------
-Control Systems Class stuff (Mostly homework).
 
 Directory Structure
 ===================
 
-pdf/
-  PDF files (instructions, homework, solutions, etc.)
+./project_name>
+  LaTeX files for a specific project.
 
-tex/
-  Latex projects for writing homework.
+<project_name>/tex/
+  LaTeX files for the specific project.
 
-tex/<project_name>
-  Latex files for a specific project.
-
-tex/<project_name>/tex/
-  Latex files for the specific project.
-
-tex/<project_name>/img/
+<project_name>/img/
   The images, TikZ files, etc. for the given project
 
-tex/<project_name>/sty/
+<project_name>/sty/
   Sty files for the latex project
+
+<project_name>/main.tex
+  The main LaTeX file for producing the main document for this project.
+  This file should not contain actuall document content but should
+  instead use the subfiles package LaTeX package for including the
+  content. This allows other projects to have access to the content of
+  <project_name>.
 
 Building
 ========
