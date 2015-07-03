@@ -27,6 +27,7 @@ SetupLaTexBuildEnv (
 	)
 
 addStyleFile("sty/customRefs.sty")
+addStyleFile("sty/customSty.sty")
 #parseUsePackage("\\usepackage[op1,op2,op3,op4]{}"  nme ops)
 
 #addLatexPackage("tabularx" "")

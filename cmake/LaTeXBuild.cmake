@@ -185,12 +185,10 @@ function(addStyleFile
 				# test for use package
 				string(FIND ${line} "\\usepackage" usepackageMatch) 
 				if(NOT ${usepackageMatch} EQUAL -1)
-					message(STATUS "usepackage found: ${line}")
 					# parse the usepackage data
 					parseUsePackage("${line}" pkgName pkgOps)
 					addLatexPackage("${pkgName}" "${pkgOps}")
 				else(NOT ${usepackageMatch} EQUAL -1)
-					message(STATUS "Extra Line Found: ${line}")
 					# otherwise add the line to the _customStyleCode for the project
 					strAppend(${PROJECT_NAME}_customStyleCode "\n${line}")
 				endif(NOT ${usepackageMatch} EQUAL -1)
@@ -213,6 +211,7 @@ endfunction(addStyleFile)
 function(GenerateStyleFile)
 
 	#add a generation meta data
+	set(${PROJECT_NAME}_packageContent "\\ProvidesPackage{${PROJECT_NAME}}\n")
 	strAppend(${PROJECT_NAME}_packageContent "\n")
 	strAppend(${PROJECT_NAME}_packageContent 
 		"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -227,22 +226,21 @@ function(GenerateStyleFile)
 	strAppend(${PROJECT_NAME}_packageContent 
 		"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n")
 
-	set(${PROJECT_NAME}_packageContent "\\ProvidesPackage{${PROJECT_NAME}}\n")
-
 	# go through all of our packages and generate the LaTeX code for the package
 	foreach(p ${${PROJECT_NAME}_packages})
 		#start the option list
 		strAppend(${PROJECT_NAME}_packageContent "\\usepackage")
 
 		#add the options to package option list
+		set(optionList "")
 		foreach(opt ${${PROJECT_NAME}_pkg_${p}})
-			strAppend(${PROJECT_NAME}_optionList "${opt},")
+			strAppend(optionList "${opt},")
 		endforeach(opt)
 
 		#remove the trailing comma from the list of options
 		if(${PROJECT_NAME}_pkg_${p})
-			removeLastChar(${PROJECT_NAME}_optionList)
-			strAppend(${PROJECT_NAME}_packageContent "[${${PROJECT_NAME}_optionList}]")
+			removeLastChar(optionList)
+			strAppend(${PROJECT_NAME}_packageContent "[${optionList}]")
 		endif(${PROJECT_NAME}_pkg_${p})
 
 		strAppend(${PROJECT_NAME}_packageContent "{${p}}\n")
