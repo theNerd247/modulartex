@@ -12,14 +12,10 @@ set(PDF_COMPILER_OPTS "")
 
 # list of projects to build
 set(projects 
-	"proj3"
-	"proj2"
 	"proj"
 	)
 
 #build the project infos
 foreach(proj ${projects})
-	message(STATUS "adding project: ${proj}")
 	add_subdirectory(${proj})
-	message(STATUS "${${proj}_includeDirs}")
 endforeach(proj)

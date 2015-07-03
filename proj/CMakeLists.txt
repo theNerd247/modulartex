@@ -12,7 +12,7 @@ set(styDir "sty")
 set(imgDir "img")
 set(otherIncludes "")
 
-set(subProjects "proj2")
+#set(subProjects "proj2")
 
 set(texinputs 
 	"${texDir}"
@@ -25,3 +25,12 @@ SetupLaTexBuildEnv (
 	"${texinputs}" # all the standalone TEXINPUTS for this project
 	"${subProjects}"
 	)
+
+addStyleFile("sty/customRefs.sty")
+#parseUsePackage("\\usepackage[op1,op2,op3,op4]{}"  nme ops)
+
+#addLatexPackage("tabularx" "")
+#addLatexPackage("booktabs" "") 
+#addLatexPackage("refstyle" "")
+
+GenerateStyleFile()

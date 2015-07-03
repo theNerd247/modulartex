@@ -1,0 +1,15 @@
+%\ProvidesPackage{blarg}
+\ProvidesPackage{customRefs}
+
+% THIS is a comment
+
+\newref{fig}{refcmd={Figure~\ref{#1}}}
+\newref{tab}{refcmd={Table~\ref{#1}}}
+\newref{gph}{refcmd={Graph~\ref{#1}}}
+\newref{eq}{refcmd={Equation~\ref{#1}}}
+\newref{al}{refcmd={Algorithm~\ref{#1}}}
+\newref{ap}{refcmd={Appendix~\ref{#1}}}
+
+\usepackage[opt1,opt2,opt3]{blarg}
+\usepackage[]{foo}
+\usepackage{bar}
