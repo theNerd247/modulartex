@@ -8,10 +8,9 @@ include(FindLATEX)
 
 project("project")
 
-set(PDF_COMPILER_OPTS "")
-
 # list of projects to build
 set(projects 
+	"proj2"
 	"proj"
 	)
 

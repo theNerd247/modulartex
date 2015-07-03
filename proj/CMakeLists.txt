@@ -11,7 +11,7 @@ set(texDir "tex")
 set(styDir "sty")
 set(imgDir "img")
 
-#set(subProjects "proj2")
+set(subProjects "proj2")
 set(styleFiles "${styDir}/labreport.sty")
 
 set(includeList 
