@@ -10,28 +10,23 @@ set(mainTexFile "main.tex")
 set(texDir "tex")
 set(styDir "sty")
 set(imgDir "img")
-set(otherIncludes "")
 
 #set(subProjects "proj2")
+set(styleFiles "${styDir}/labreport.sty")
 
-set(texinputs 
+set(includeList 
 	"${texDir}"
 	"${styDir}"
 	"${imgDir}"
-	"${otherIncludes}")
-
-SetupLaTexBuildEnv (
-	"${mainTexFile}" # the main tex file
-	"${texinputs}" # all the standalone TEXINPUTS for this project
-	"${subProjects}"
 	)
 
-addStyleFile("sty/customRefs.sty")
-addStyleFile("sty/customSty.sty")
-#parseUsePackage("\\usepackage[op1,op2,op3,op4]{}"  nme ops)
-
-#addLatexPackage("tabularx" "")
-#addLatexPackage("booktabs" "") 
-#addLatexPackage("refstyle" "")
-
-GenerateStyleFile()
+SetupLaTexBuildEnv (
+	# the main tex file
+	"${mainTexFile}" 
+	# the file search paths this project provides
+	"${includeList}" 
+	# the style files this project provides
+	"${styleFiles}"
+	# projects this project depends on
+	"${subProjects}"
+	)
