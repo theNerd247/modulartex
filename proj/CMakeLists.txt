@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
-cmake_policy(SET CMP0011 NEW) #acknowledge policy push/pop
+#acknowledge policy push/pop
+cmake_policy(SET CMP0011 NEW) 
 
 include(LaTeXBuild)
 
