@@ -4,7 +4,7 @@ project
 Directory Structure
 ===================
 
-./project_name>
+<project_name>
   Files related for a specific project
 
 <project_name>/tex/
