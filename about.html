@@ -1,0 +1,57 @@
+---
+layout: page
+title: "About"
+description: "What is modulartex?"
+header-img: "img/about-bg.jpg"
+---
+
+<p>
+	modulartex is a build system for LaTeX documents that is designed with
+	modularity in mind. Most LaTeX documents are written using either a single
+	document (which becomes very large and unmanageable) or with a poor directory
+	hierarchy and the 
+	<a href=""https://en.wikibooks.org/wiki/LaTeX/Modular_Documents target="_blank">
+		subfiles
+	</a> package. By a "poor" hierarchy I mean that the directory structure tends
+	to have the main tex file and a single style file in the root of the directory
+	structure and the other tex files in a subdirectory called "tex/" (or
+	something of the like). 
+</p>
+
+<p>
+	There is nothing wrong with this directory layout, and infact for the most
+	part LaTeX does a pretty good job for modularity. However, when writing
+	multiple documents that have different pieces and reuse a lot of code (such as
+	a common set of images, TikZ files, other source code files, etc.) LaTeX
+	doesn't provide a nice system for providing the location of documents.
+</p>
+
+<p>
+	Another issue of LaTeX is liking (logically) style files with their
+	corresponding tex files. Here's an example. Let's say you have a couple of
+	projects with the following directory structure:
+</p>
+
+<!--
+
+<code>
+	parent_dir
+		|
+		|- project1/
+		|		|
+		|		|- main.tex
+		|		|
+		|		|- main.sty
+		|		|
+		|		|- tex/
+		|		|		|- proj1.tex
+		|
+		|- project2/
+		|		|
+		|		|- main.tex
+		|		|
+		|		|- main.sty
+		|		|
+		|		|- tex/
+		|		|		|- proj2.tex
+</code>  -->
