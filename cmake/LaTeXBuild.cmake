@@ -53,9 +53,9 @@ function(listUpdate
 		item
 		)
 
-	list(APPEND ${lst} ${item})
-	list(REMOVE_DUPLICATES ${lst})
-	set(${lst} ${${lst}} PARENT_SCOPE)
+	list(APPEND "${lst}" "${item}")
+	list(REMOVE_DUPLICATES "${lst}")
+	set("${lst}" "${${lst}}" PARENT_SCOPE)
 endfunction(listUpdate)
 ################################ End Utility ################################
 
@@ -129,11 +129,11 @@ function(SetupLaTexBuildEnv
 	# process the subprojects
 	foreach(p ${subProjects})
 		#add the include directories of the subprojects 
-		list(APPEND ${PROJECT_NAME}_includeDirs ${${p}_includeDirs})
+		list(APPEND ${PROJECT_NAME}_includeDirs "${${p}_includeDirs}")
 
 		#add the subproject style files  to the current list of style files to
 		#process
-		listUpdate(${PROJECT_NAME}_styleFileList ${${p}_styleFileList})
+		listUpdate(${PROJECT_NAME}_styleFileList "${${p}_styleFileList}")
 	endforeach(p)
 
 	#generate the project style file
@@ -164,7 +164,7 @@ function(SetupLaTexBuildEnv
 		${PDF_COMPILER_OPTS}
 		"${${PROJECT_NAME}_mainTexFilePath}"
 		DEPENDS "${${PROJECT_NAME}_mainTexFilePath}"
-		COMMENT "pdflates"
+		COMMENT "pdflatex"
 		)
 
 	add_custom_target("build_${PROJECT_NAME}" 
