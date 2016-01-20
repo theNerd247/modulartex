@@ -11,7 +11,6 @@ project("project")
 
 # list of projects to build
 set(projects 
-	"proj2"
 	"proj"
 	)
 

@@ -12,13 +12,13 @@ set(texDir "tex")
 set(styDir "sty")
 set(imgDir "img")
 
-set(subProjects "proj2")
-set(styleFiles "${styDir}/labreport.sty")
+#set(subProjects "")
+#set(styleFiles "")
 
 set(includeList 
-	"${texDir}"
-	"${styDir}"
-	"${imgDir}"
+	"tex"
+	"sty"
+	"img"
 	)
 
 SetupLaTexBuildEnv (
