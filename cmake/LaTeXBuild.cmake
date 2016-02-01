@@ -3,6 +3,9 @@ cmake_policy(SET CMP0011 NEW) #acknowledge policy push/pop
 
 include(FindLATEX)
 
+set(PDF_COMPILER_OPTS 
+	"-file-line-error")
+
 ################################## Utility ##################################
 
 # append a string to a string
