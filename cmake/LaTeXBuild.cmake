@@ -166,16 +166,21 @@ function(SetupLaTexBuildEnv
 		${PDFLATEX_COMPILER} # run pdflatex
 		${PDF_COMPILER_OPTS}
 		"${${PROJECT_NAME}_mainTexFilePath}"
+		COMMAND
+		"TEXINPUTS=${GLOBAL_TEXINPUTS}:${${PROJECT_NAME}_texInputs}" # set the TEXINPUTS
+		${PDFLATEX_COMPILER} # run pdflatex
+		${PDF_COMPILER_OPTS}
+		"${${PROJECT_NAME}_mainTexFilePath}"
 		DEPENDS "${${PROJECT_NAME}_mainTexFilePath}"
 		COMMENT "pdflatex"
 		)
 
-	add_custom_target("build_${PROJECT_NAME}" 
+	add_custom_target("LaTeX_${PROJECT_NAME}" 
 		ALL 
 		DEPENDS "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pdf"
 		)
 
-	set_target_properties("build_${PROJECT_NAME}"
+	set_target_properties("LaTeX_${PROJECT_NAME}"
 		PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 		)
 endfunction(SetupLaTexBuildEnv)
