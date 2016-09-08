@@ -159,30 +159,36 @@ function(SetupLaTexBuildEnv
 			)
 	endforeach(d)
 
-	add_custom_command(
-		OUTPUT "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pdf"
-		COMMAND
-		"TEXINPUTS=${GLOBAL_TEXINPUTS}:${${PROJECT_NAME}_texInputs}" # set the TEXINPUTS
-		${PDFLATEX_COMPILER} # run pdflatex
-		${PDF_COMPILER_OPTS}
-		"${${PROJECT_NAME}_mainTexFilePath}"
-		COMMAND
-		"TEXINPUTS=${GLOBAL_TEXINPUTS}:${${PROJECT_NAME}_texInputs}" # set the TEXINPUTS
-		${PDFLATEX_COMPILER} # run pdflatex
-		${PDF_COMPILER_OPTS}
-		"${${PROJECT_NAME}_mainTexFilePath}"
-		DEPENDS "${${PROJECT_NAME}_mainTexFilePath}"
-		COMMENT "pdflatex"
-		)
+	if(mainTexFile)
+		get_filename_component(mainTexFileName "${mainTexFile}" NAME_WE)
 
-	add_custom_target("LaTeX_${PROJECT_NAME}" 
-		ALL 
-		DEPENDS "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pdf"
-		)
+		add_custom_command(
+			OUTPUT "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pdf"
+			WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/${PROJECT_NAME}"
+			COMMAND
+			"TEXINPUTS=${GLOBAL_TEXINPUTS}:${${PROJECT_NAME}_texInputs}" # set the TEXINPUTS
+			${PDFLATEX_COMPILER} ${PDF_COMPILER_OPTS} "${${PROJECT_NAME}_mainTexFilePath}"
+			COMMAND
+			"TEXINPUTS=${GLOBAL_TEXINPUTS}:${${PROJECT_NAME}_texInputs}" # set the TEXINPUTS
+			${PDFLATEX_COMPILER} ${PDF_COMPILER_OPTS} "${${PROJECT_NAME}_mainTexFilePath}"
+			COMMAND
+			mv "${CMAKE_BINARY_DIR}/${PROJECT_NAME}/${mainTexFileName}.pdf" "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pdf"
+			DEPENDS "${${PROJECT_NAME}_mainTexFilePath}"
+			COMMENT "pdflatex"
+			)
 
-	set_target_properties("LaTeX_${PROJECT_NAME}"
-		PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
-		)
+		add_custom_target("LaTeX_${PROJECT_NAME}" 
+			ALL 
+			DEPENDS "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pdf"
+			)
+
+		set_target_properties("LaTeX_${PROJECT_NAME}"
+			PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+			)
+	else()
+		message("Skipping building ${PROJECT_NAME}.pdf ... no main file given")
+	endif()
+
 endfunction(SetupLaTexBuildEnv)
 ########################### End SetupLaTexBuildEnv ###########################
 
